@@ -1,12 +1,13 @@
+import java.util.Currency
 import kotlin.time.measureTimedValue
 
 
 fun main(args: Array<String>) {
-    val math = Course (" MATH ")
+    val math = Course (CourseName.MATH)
     math.grade = 5.0
-    val english = Course (" ENGLISH ")
+    val english = Course (CourseName.ENGLISH)
     english.grade = 3.0
-    val chemistry = Course (" CHEMISTRY ")
+    val chemistry = Course (CourseName.CHEMISTRY)
     //val physics = Course (" PHYSICS ")
     //physics.grade = 0.7 // invalide
     //val chemistry = Course (" CHEMISTRY ")

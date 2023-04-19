@@ -1,4 +1,4 @@
-class Course(val name : String){
+class Course(val name : CourseName){
 
     var grade : Double? = null
         set(value) {

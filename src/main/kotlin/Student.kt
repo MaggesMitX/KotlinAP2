@@ -15,10 +15,10 @@ class Student (val name : String, var age : Int) {
         var sum  = 0.0
         var size = 0
         for (course in courses){
-            course.grade?.let { sum += it
-                size++}
-
-
+            course.grade?.let {
+                sum += it
+                size++
+            }
         }
         return sum / size
     }
