@@ -1,4 +1,4 @@
-class Student (val name : String, var age : Int) {
+class Student (val name : String, var age : Int, val id : String) {
 
     val courses = mutableListOf<Course>()
     fun addCourse(course: Course) {

@@ -15,13 +15,18 @@ fun main(args: Array<String>) {
     println ( math.passed ) // false
     println ( english.passed ) // true
 
-    val student1 = Student (" Erika Mustermann ", 21)
-    val student2 = Student (" Max Mustermann ", 21)
+    val student1 = Student (" Erika Mustermann ", 21, "")
+    val student2 = Student (" Max Mustermann ", 21, "")
 
     student1.addCourse ( math )
     student1.addCourse ( chemistry )
     student2.addCourse ( english )
-    student1.addCourse ( math ) // invalide
+    //student1.addCourse ( math ) // invalide
+
+    val studentClass = StudentClass ("10b")
+    studentClass . addStudent ( student1 )
+    studentClass . addStudent ( student2 )
+    studentClass . addStudent ( student1 ) // invalide
 
 
 }
