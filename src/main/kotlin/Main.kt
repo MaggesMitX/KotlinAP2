@@ -1,6 +1,3 @@
-import java.util.Currency
-import kotlin.time.measureTimedValue
-
 
 fun main(args: Array<String>) {
     val math = Course (CourseName.MATH)
@@ -24,9 +21,9 @@ fun main(args: Array<String>) {
     //student1.addCourse ( math ) // invalide
 
     val studentClass = StudentClass ("10b")
-    studentClass . addStudent ( student1 )
-    studentClass . addStudent ( student2 )
-    studentClass . addStudent ( student1 ) // invalide
+    studentClass.addStudent ( student1 )
+    studentClass.addStudent ( student2 )
+    studentClass.addStudent ( student1 ) // invalide
 
 
 }

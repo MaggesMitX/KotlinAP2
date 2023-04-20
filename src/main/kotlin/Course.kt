@@ -1,7 +1,7 @@
 class Course(val name : CourseName){
 
     var grade : Double? = null
-        set(value) {
+        set(value) {                // Setter Methode
             if (value == null){
                 throw Exception ("Nullwert!")
             }
@@ -12,7 +12,7 @@ class Course(val name : CourseName){
             field = value
         }
     val passed : Boolean
-        get() {
+        get() {         // Getter Methode 
             return grade?.let { it<=4.0} ?: false
         }
 }

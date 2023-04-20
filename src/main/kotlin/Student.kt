@@ -1,9 +1,9 @@
 class Student (val name : String, var age : Int, val id : String) {
 
-    val courses = mutableListOf<Course>()
+    val courses = mutableListOf<Course>()       // Veränderbare Liste
     fun addCourse(course: Course) {
 
-        if (courses.contains(course)) {
+        if (courses.contains(course)) {         // Contains sucht nach dem gewählten Parameter
             throw IllegalArgumentException("Kurs ist bereits Teil der Liste!")
         }
         courses.add(course)
