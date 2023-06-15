@@ -1,5 +1,5 @@
 class LinkedList <T: Comparable <T>> {
-    data class Node<T>(val data: T, var next: Node<T>?)
+    data class Node<T>(var data: T, var next: Node<T>?)
 
     private var first: Node<T>? = null
 
@@ -28,6 +28,18 @@ class LinkedList <T: Comparable <T>> {
         }
         return count
     }*/
+
+    /* For Each Size() Methode
+    * fun size(): Int {
+    var count = 0
+
+    forEach {
+        count++
+    }
+
+    return count
+}
+*/
 
     override fun toString(): String { // => Wandelt die verkettete Liste in einen String um und gibt diesen zurück.
         val element = mutableListOf<T>()
@@ -101,5 +113,4 @@ class LinkedList <T: Comparable <T>> {
         }
         return null
     }
-
 }
