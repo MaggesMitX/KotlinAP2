@@ -1,46 +1,83 @@
-fun main () {
-    val fruits = LinkedList<String>()
-    val newList = LinkedList<String>()
-    fruits.addFirst("Birne")
-    fruits.addFirst("Apfel")
-    println(fruits.toString()) // [Apfel, Birne]
-    fruits.addLast("Erdbeere")
-    println(fruits.toString()) // [Apfel, Birne, Erdbeere]
-    fruits.addSorted("Banane")
-    println(fruits.toString()) // [Apfel, Banane, Birne, Erdbeere]
-    fruits.addSorted("Blaubeere")
-    println(fruits.toString()) // [Apfel, Banane, Birne, Blaubeere, Erdbeere]
+class NumberNode(val value: Int, var left: NumberNode? = null, var right: NumberNode? = null) // TreeNode
 
-    println("Jetzt gleich kommt CountForSize")
-    println(fruits.size())
+open class NumberTree { //Tree
+    var root: NumberNode? = null
 
+    object Empty : NumberTree()
 
-    newList.addLast("Wassermelone")
-    newList.addLast("Mango")
-    fruits.appendList(newList)
-    println(fruits.toString()) // [Apfel, Banane, Birne, Blaubeere, Erdbeere, Wassermelone, Mango]
-
-    fruits.forEach { element ->
-        println(element)
+    private fun insertRecursive(currentNode: NumberNode, value: Int) {
+        if (value < currentNode.value) {
+            if (currentNode.left == null) {
+                currentNode.left = NumberNode(value)
+            } else {
+                insertRecursive(currentNode.left!!, value)
+            }
+        } else {
+            if (currentNode.right == null) {
+                currentNode.right = NumberNode(value)
+            } else {
+                insertRecursive(currentNode.right!!, value)
+            }
+        }
     }
 
-    val found = fruits . firstWhere { element ->
-        element . startsWith ("B")
+    fun size(): Int {
+        return sizeRecursive(root)
     }
-    println ( found ) // Banane
-    val found2 = fruits . firstWhere { element ->
-        element . contains (" beere ")
+    private fun sizeRecursive(currentNode: NumberNode?): Int {
+        if (currentNode == null) {
+            return 0
+        }
+        return 1 + sizeRecursive(currentNode.left) + sizeRecursive(currentNode.right)
     }
-    println ( found2 ) // Blaubeere
-    val found3 = fruits . firstWhere { element ->
-        element . length > 10
+    fun add(number: Int): NumberTree {
+        val newTree = NumberTree()
+        newTree.root = addRecursive(root, number)
+        return newTree
     }
-    println ( found3 ) // Wassermelone
+    private fun addRecursive(currentNode: NumberNode?, number: Int): NumberNode {
+        if (currentNode == null) {
+            return NumberNode(number)
+        }
+
+        if (number <= currentNode.value) {
+            currentNode.left = addRecursive(currentNode.left, number)
+        } else {
+            currentNode.right = addRecursive(currentNode.right, number)
+        }
+
+        return currentNode
+    }
+    fun sum(): Double {
+        return sumRecursive(root)
+    }
+
+    private fun sumRecursive(currentNode: NumberNode?): Double {
+        if (currentNode == null) {
+            return 0.0
+        }
+        return currentNode.value.toDouble() + sumRecursive(currentNode.left) + sumRecursive(currentNode.right)
+    }
+
+    fun average(): Double {
+        val sum = sum()
+        val count = size()
+        return if (count > 0) sum / count else 0.0
+    }
 
 }
-//Aufgabe 2 Was sind Funktionen höherer Ordnung?
+fun main() {
+    val tree = NumberTree()
+    val tree1 = NumberNode(1)
+    val tree2 = NumberNode(2)
+    val tree4 = NumberNode(4)
+    val tree3 = NumberNode(3)
+    val tree5 = NumberNode(5,)
+    val tree8 = NumberNode(8)
+    val tree10 = NumberNode(10)
 
-// Was bedeutet es, wenn ein Algorithmus eine Laufzeit von O(1), O(n) oder O(n2) hat?
-// O(1) -> Laufzeit bleibt gleich egal wie groß die Eingabe ist. Immer gleiche Zugriffszeit Bsp. Algorithmus= variable deklarieren/ If abfrage
-// O(n) ->  Lineare Laufzeit, die proportional zur Größe der Eingabe ist. Bsp. Algorithmus= while schleife(input menge)
-// O(n^2) -> Quadratische Laufzeit, die exponentiell der Eingabe steigt. Bsp. Algorithmus= Zwei ineinandergeschachtelte schleifen
+
+    println("Size: ${tree.size()}") // Ausgabe: Size: 7
+    println("Sum: ${tree.sum()}") // Ausgabe: Sum: 34.0
+    println("Average: ${tree.average()}") // Ausgabe: Average: 4.857142857142857
+}
