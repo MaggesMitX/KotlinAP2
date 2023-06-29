@@ -19,6 +19,7 @@ object Empty : NumberTree() {
 
     override fun average(): Double = 0.0
 
+
 }
 
 class NumberNode (val value : Int, val left : NumberTree = Empty, val right : NumberTree = Empty) : NumberTree() {
@@ -40,19 +41,23 @@ class NumberNode (val value : Int, val left : NumberTree = Empty, val right : Nu
     override fun average(): Double {
         return sum()/size()
     }
+
+
 }
 
 
 
+
 fun main() {
-    println("Bäume erzeugen")
+    println("Bäums erzeugen")
 
     val tree1 = NumberNode(1)
-    val tree2 = NumberNode(2)
     val tree4 = NumberNode(4)
-    val tree3 = NumberNode(3,tree2, tree4)
     val tree10 = NumberNode(10)
-    val tree8 = NumberNode(8)
+
+    val tree2 = NumberNode(2, tree1)
+    val tree3 = NumberNode(3, tree2, tree4)
+    val tree8 = NumberNode(8, Empty, tree10)
     val root = NumberNode(5,tree3, tree8)
 
 
