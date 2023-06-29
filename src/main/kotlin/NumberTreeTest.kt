@@ -1,9 +1,7 @@
 import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
 
 class NumberTreeTest {
-
     @Test
     fun testSize () {
         val tree : NumberTree = Empty
@@ -22,14 +20,10 @@ class NumberTreeTest {
             )
         assertEquals (7, assignment1Tree.size () ) // der Baum aus Aufgabe 1 hat eine Größe von 7
     }
-
-
-
     @Test
     fun add() {
         var tree : NumberNode= Empty.add(5)
         assertEquals (5, tree.value)
-
 
         var assignment1Tree : NumberNode =
             NumberNode (5,
@@ -46,7 +40,6 @@ class NumberTreeTest {
 
         assignment1Tree = assignment1Tree.add(0)
         assertEquals (0, ((((assignment1Tree.left as NumberNode).left as NumberNode).left as NumberNode).left as NumberNode).value)
-
 
         var assignment2Tree : NumberNode =
             NumberNode (5,
@@ -69,7 +62,6 @@ class NumberTreeTest {
         val tree : NumberTree = Empty
         assertEquals (0.0 , tree .sum () ) // ein leerer Baum hat eine Größe von 1
 
-
         val assignment1Tree : NumberTree =
             NumberNode (5,
                 left = NumberNode (3,
@@ -85,12 +77,10 @@ class NumberTreeTest {
         assertEquals (33.0, assignment1Tree.sum () ) // der Baum aus Aufgabe 1 hat eine Größe von 7
 
     }
-
     @Test
     fun average() {
         val tree : NumberTree = Empty
         assertEquals (0.0 , tree . average() ) // ein leerer Baum hat eine Größe von 1
-
 
         val assignment1Tree : NumberTree =
             NumberNode (5,
